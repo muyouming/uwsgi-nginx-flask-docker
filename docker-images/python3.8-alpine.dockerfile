@@ -18,7 +18,7 @@ ENV STATIC_INDEX 0
 COPY ./app /app
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+
 # Make /app/* available to be imported by Python globally to better support several use cases like Alembic migrations.
 ENV PYTHONPATH=/app
 
@@ -33,4 +33,5 @@ ENTRYPOINT ["/entrypoint.sh"]
 # Run the start script provided by the parent image tiangolo/uwsgi-nginx.
 # It will check for an /app/prestart.sh script (e.g. for migrations)
 # And then will start Supervisor, which in turn will start Nginx and uWSGI
+CMD ["pip install -r /app/requirements.txt"]
 CMD ["/start.sh"]
