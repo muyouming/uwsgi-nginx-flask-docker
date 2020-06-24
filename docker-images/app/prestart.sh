@@ -10,3 +10,4 @@ sleep 10;
 # Run migrations
 alembic upgrade head
 "
+pip install -r /app/requirements.txt
